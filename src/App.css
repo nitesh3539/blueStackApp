@@ -1,0 +1,168 @@
+.App {
+  position: relative;
+  top: 0%;
+  margin-bottom: 5%;
+}
+
+.App-logo {
+  height: 3em;
+  margin-bottom: 40em;
+  margin-top: -1em;
+}
+
+.App-header {
+  left: 0;
+  height: 4em;
+  width: 100%;
+  padding-top: 1%;
+  background-color: #0a0e52;
+}
+
+
+.Header-content{
+  padding-left: 20vh;
+}
+
+.App-link {
+  color: transparent;
+}
+
+.manage-comp{
+  margin-left: 10%;
+  width: 80%;
+  margin-right: 10%;
+  margin-top: -5vh;
+}
+
+.manage-text {
+  font-size: 6ch;
+  color: #0a0e52;
+  font-weight: 600;
+  font-family: sans-serif;
+}
+
+
+.tabs {
+  -webkit-tap-highlight-color: red;
+  margin-right: 10px;
+}
+
+.tabList {
+  border-bottom-width: 1ex;
+  border-bottom-style: ridge;
+  margin: 10px 10px 15px;
+  padding: 0;
+}
+
+.tab {
+  border-bottom: none;
+  position: relative;
+  bottom: -5px;
+  list-style: none;
+  cursor: pointer;
+}
+
+.tabs-selected {
+  border-bottom:5px solid rgb(19, 133, 43);
+  color: black;
+  border-radius: 5px 5px 0 0;
+  font-size: 1.2em;
+  font-weight: 400;
+  color:rgb(19, 133, 43);;
+}
+
+
+#title {
+  text-align: center;
+  font-family: arial, sans-serif;
+}
+
+#students {
+  margin-top: 40px;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  /* border-collapse: collapse; */
+  /* border: 3px solid #ddd; */
+  box-shadow: 1px 1px 5px 1px #888888;
+  width: 100%;
+}
+
+#students td, #students th {
+  /* border: 1px solid #ddd; */
+  margin: 0;
+  padding: 8px;
+}
+
+#students tr:nth-child(even){background-color: #f2f2f2;}
+
+#students tr:hover {background-color: #ddd;}
+
+.table-header-data {
+  color: #0a0e52;
+  font-family: sans-serif;
+  font-weight: 400;
+  /* padding: 20px; */
+}
+
+#table-header-color{
+  background-color: #e4e4e4;
+
+}
+
+.table-header {
+  /* display: inline; */
+  height: 40px;
+  /* display: -webkit-flex; Safari */
+  -webkit-flex-direction: row; /* Safari 6.1+ */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+
+  /* flex-direction: row; */
+}
+
+.table-data {
+  /* display: inline; */
+  height: 70px;
+  /* display: -webkit-flex; Safari */
+  -webkit-flex-direction: row; /* Safari 6.1+ */
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  /* border-bottom:1px groove rgb(19, 133, 43); */
+
+  /* flex-direction: row; */
+}
+
+.compaign-data {
+  -webkit-flex-direction: row; /* Safari 6.1+ */
+  display: flex;
+  flex-direction: row;
+}
+
+.table{
+  width: 100%;
+}
+
+.border-wid {
+  margin-left: 10px;
+  width: 95%;
+  height: 2px;
+  background-color: #e4e4e4;
+}
+
+.color.color {
+	border-radius: 0;
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+  font-size: 0px;
+	font-weight: 600;
+	border-bottom: 1px solid #ebebeb !important;
+	border: none;
+	box-sizing: border-box;
+  margin-top: 22px;
+  overflow: visible;
+	box-shadow: none;
+  font-family: Open Sans, sans-serif;
+  /* background-color:  red; */
+}
