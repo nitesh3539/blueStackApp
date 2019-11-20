@@ -26,7 +26,7 @@ function App() {
       </header>
       <div className="manage-comp">
         <p className="manage-text">
-          Manage Compaigns
+          Manage Campaigns
         </p>
         <AppTable/>
       </div>

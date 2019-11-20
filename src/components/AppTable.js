@@ -156,14 +156,16 @@ export default class AppTable extends PureComponent {
     }
 
     componentDidMount() {
-        let data = JSON.parse(JSON.stringify(this.state.data))
+        let tableData = window.localStorage.getItem('tableData')
+        tableData = tableData ? JSON.parse(tableData) : null
+        let data = tableData && tableData.length ? tableData : JSON.parse(JSON.stringify(this.state.data))
         let updatedData = data.map((item) => {
             const createdData = new Date(item.createdOn)
             const currentDate = new Date()
             item.diffTime = currentDate.getDate() - createdData.getDate();
             return item
         })
-
+        window.localStorage.setItem('tableData',JSON.stringify(updatedData))
         this.setState({ data: updatedData })
     }
 
@@ -174,13 +176,12 @@ export default class AppTable extends PureComponent {
             <Tab className="tab" style={{
                 display: "inline-block",
                 paddingLeft: 5,
-                // transition: "all 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
                 padding: "5px 10px 15px",
                 marginRight: "50px",
                 cursor: "pointer",
-                opacity: "0.4",
+                opacity: "0.8",
                 ":hover": {
-                    opacity: 1
+                    opacity: 1.6
                 }
             }}>
                 <div>{data}</div>
@@ -196,8 +197,6 @@ export default class AppTable extends PureComponent {
                 <div className="table-header-data" style={{ width: '27%', alignItems: 'center' }}>COMPAIGN</div>
                 <div className="table-header-data" style={{ width: '18%' }}>VIEW</div>
                 <div className="table-header-data" style={{ width: '37%' }}>ACTIONS</div>
-
-
             </div>
         )
     }
@@ -249,10 +248,10 @@ export default class AppTable extends PureComponent {
                 contentLabel="Minimal Modal Example"
                 onRequestClose={this.handleCloseModal}
                 shouldCloseOnOverlayClick={false}
+                overlayClassName="modal-overlay"
                 style={customStyles}>
                 <div>
                     {this.renderCompaignData('PUBG MOBILE', 'US', modal, 100)}
-
                     <div style={{marginTop : 10, fontFamily : 'sans-serif', fontSize : 26, fontWeight : 'bold', color : '#0a0e52'}}>Pricing</div>
                     {this.renderModalContent('1 Months', '100.00')}
                     {this.renderModalContent('1 Week', '500.00')}
@@ -270,7 +269,6 @@ export default class AppTable extends PureComponent {
     renderModalContent(date, price) {
         return (
             <div style={{ alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between', marginTop: 10 }} className="compaign-data">
-
                 <div style={{ fontSize: 15, color: '#a1a1a1', fontFamily: 'sans-serif', width: '100%' }}>
                     {date}
                 </div>
@@ -297,13 +295,14 @@ export default class AppTable extends PureComponent {
         let currentData = JSON.parse(JSON.stringify(this.state.data))
         let updatedData = currentData.map((item) => {
             if (item.id == id) {
-                item.createdOn = Date.parse(date)
+                item.createdOn = date
                 const createdData = new Date(item.createdOn)
                 const currentDate = new Date()
                 item.diffTime = currentDate.getDate() - createdData.getDate();
             }
             return item
         })
+        window.localStorage.setItem('tableData',JSON.stringify(updatedData))
         this.setState({ data: updatedData })
     }
 
@@ -313,7 +312,7 @@ export default class AppTable extends PureComponent {
                 {this.renderViewPricing('CSV', file, 25)}
                 {this.renderViewPricing('Report', statistics, 35)}
                 <div style={{ width: '40%', alignItems: 'center' }} className="compaign-data">
-                    <div style={{ width: '1%' }}>
+                    <div style={{ width: '20%' }}>
                         <Calender icon={calender} value={'Scheduled Again'} setDate={(date) => { this.setDate(date, id) }} />
                     </div>
                     <div style={{ fontSize: 13, color: '#0a0e52', fontFamily: 'sans-serif', width: '100%', opacity: 0.6, overflow: 'hidden' }}>
@@ -338,7 +337,6 @@ export default class AppTable extends PureComponent {
                     </div>
                     <div className="border-wid" />
                 </div>
-
             )
         })
     }
@@ -353,14 +351,12 @@ export default class AppTable extends PureComponent {
     }
 
     render() {
-        console.log(this.state.data)
         return (
-            <Tabs style={{}} selectedTabClassName="tabs-selected" className="tabs" selectedIndex={this.state.tabIndex} onSelect={tabIndex => this.setState({ tabIndex })}>
-                <TabList className="tabList" style={{ borderBottomWidth: 5 }}>
-                    {this.CustomTab('Upcoming Compaigns')}
-                    {this.CustomTab('Live Compaigns')}
-                    {this.CustomTab('Past Compaigns')}
-
+            <Tabs style={{}} disabledTabClassName="disabled-tab" selectedTabClassName="tabs-selected" className="tabs" selectedIndex={this.state.tabIndex} onSelect={tabIndex => this.setState({ tabIndex })}>
+                <TabList className="tabList" style={{ borderBottomWidth: 1 }}>
+                    {this.CustomTab('Upcoming Campaigns')}
+                    {this.CustomTab('Live Campaigns')}
+                    {this.CustomTab('Past Campaigns')}
                 </TabList>
                 <TabPanel>{this.renderTable(this.state.data.filter((item) => item.diffTime < 0))}</TabPanel>
                 <TabPanel>{this.renderTable(this.state.data.filter((item) => item.diffTime == 0))}</TabPanel>

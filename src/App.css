@@ -18,6 +18,19 @@
   background-color: #0a0e52;
 }
 
+.modal-overlay {
+  position: fixed; /* Sit on top of the page content */
+  display: table; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.6); /* Black background with opacity */
+  z-index: 2;
+}
+
 
 .Header-content{
   padding-left: 20vh;
@@ -31,11 +44,11 @@
   margin-left: 10%;
   width: 80%;
   margin-right: 10%;
-  margin-top: -5vh;
 }
 
 .manage-text {
-  font-size: 6ch;
+  font-size: 5ch;
+  margin-top: 20px;
   color: #0a0e52;
   font-weight: 600;
   font-family: sans-serif;
@@ -50,25 +63,30 @@
 .tabList {
   border-bottom-width: 1ex;
   border-bottom-style: ridge;
-  margin: 10px 10px 15px;
+  /* margin: 10px 10px 15px; */
+
   padding: 0;
 }
 
 .tab {
   border-bottom: none;
   position: relative;
-  bottom: -5px;
   list-style: none;
   cursor: pointer;
+  color: #0a0e52;
 }
 
 .tabs-selected {
-  border-bottom:5px solid rgb(19, 133, 43);
+  border-bottom:3px solid rgb(112, 173, 13);
   color: black;
   border-radius: 5px 5px 0 0;
   font-size: 1.2em;
-  font-weight: 400;
-  color:rgb(19, 133, 43);;
+  font-weight: 500;
+  color:rgb(112, 173, 13);
+}
+
+.disabled-tab{
+  color:rgb(112, 173, 13);
 }
 
 
